@@ -14,7 +14,6 @@ public class CarTag : MonoBehaviour
         if (collision.gameObject.CompareTag("TeamTrees"))
         {
             Debug.LogError("WHy u hit treees");
-            Utils.ForceCrash(ForcedCrashCategory.Abort);
         }
         // Do not delete the section below - this is to guide you
         else if (collision.gameObject.CompareTag("Untagged"))

@@ -1,4 +1,4 @@
-﻿using NiceCar = UnityEngine.Rigidbody;
+﻿
 using System;
 using UnityEngine;
 using System.Collections;
@@ -22,7 +22,7 @@ public class HoverMotor : MonoBehaviour
     // Should the car accelerate
     public bool accelerating = true;
     
-    private NiceCar carMain;
+    private Rigidbody carMain;
 
     // Vehicle lean
     [Header("Leaning Settings")]
@@ -45,6 +45,11 @@ public class HoverMotor : MonoBehaviour
     void Awake()
     {
         StartCoroutine(DriveCar());
+    }
+
+    void Start()
+    {
+        carMain = GetComponent<Rigidbody>();
     }
 
     void Update()
