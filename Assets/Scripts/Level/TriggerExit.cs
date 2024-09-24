@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Diagnostics;
@@ -12,8 +13,11 @@ public class TriggerExit : MonoBehaviour
 
     private bool exited = false;
 
+    [SerializeField] private GameObject Chunk;
+
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Chunk exit triggered");
         CarTag carTag = other.GetComponent<CarTag>();
         if (carTag != null)
         {
@@ -28,8 +32,9 @@ public class TriggerExit : MonoBehaviour
 
     IEnumerator WaitAndDestroy()
     {
-        yield return new WaitForSeconds(delay);
-        
+        yield return new WaitForSeconds (delay);
+        Destroy(Chunk);
+        Debug.Log("Chunk destroyed");
         // Destroy the LevelBlock
     }
 }
