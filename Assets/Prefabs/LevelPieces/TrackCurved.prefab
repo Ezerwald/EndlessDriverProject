@@ -90,7 +90,7 @@ MonoBehaviour:
   - {x: -29.690002, y: 0, z: -106.035645}
   - {x: 12.724121, y: 0, z: -82.00058}
   m_Extrude: 0
-  m_EditMode: 3
+  m_EditMode: 0
   m_FlipNormals: 0
   isOnGrid: 0
 --- !u!33 &8909570926046647084
