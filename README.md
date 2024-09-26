@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.5] - 2024-09-26
 ### Added
 - Obstacles spawning on Level Blocks with some probability
-- Gradual growth of spawning probability of obstacles
 - Collider to obstacles prefabs
 - "Obstacle" tag to obstacles prefabs
 
