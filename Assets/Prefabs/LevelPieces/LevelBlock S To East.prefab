@@ -3567,8 +3567,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12697cf7eebed3f4f86adfaf0b4b2b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: []
-  spawnProbability: 0
+  obstacles:
+  - {fileID: 6339771083633679027, guid: 259919df6881895419281466130f27f8, type: 3}
+  - {fileID: 5935689001912948208, guid: 3ef92c1ba8252a34ab2666db26d20d68, type: 3}
+  - {fileID: 6581174127812733574, guid: a8754ed82fe9e514898efd63f45f62a3, type: 3}
+  spawnProbability: 50
+  spawnProbabilityIncreaseRate: 1
   spawnPoints:
   - {fileID: 5306563479208216388}
   - {fileID: 5916854060409054244}

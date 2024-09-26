@@ -21,6 +21,8 @@ public class LevelBlockScript : MonoBehaviour
         if (obstacles.Length == 0 || spawnPoints.Length == 0)
             return;
 
+        Debug.Log("Spawning probability: " + spawnProbability);
+
         foreach (var point in spawnPoints)
         {
             int randomNumber = Random.Range(0, 100);
@@ -30,12 +32,11 @@ public class LevelBlockScript : MonoBehaviour
                 int randomObstacleId = Random.Range(0, obstacles.Length);
 
                 var tempObject = Instantiate(obstacles[randomObstacleId], this.transform);
+
                 tempObject.transform.position = point.position;
-                tempObject.transform.localPosition = new Vector3(tempObject.transform.localPosition.x + Random.Range(-0.5f, 0.5f), tempObject.transform.localPosition.y, tempObject.transform.localPosition.z + Random.Range(-0.5f, 0.5f));
+                tempObject.transform.localPosition = new Vector3(tempObject.transform.localPosition.x + Random.Range(-0.5f, 0.5f), tempObject.transform.localPosition.y - 0.05f, tempObject.transform.localPosition.z + Random.Range(-0.5f, 0.5f));
                 tempObject.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
             }
         }
     }
-
-
 }

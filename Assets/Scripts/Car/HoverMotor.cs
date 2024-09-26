@@ -7,15 +7,15 @@ public class HoverMotor : MonoBehaviour
 {
     [Header("Hover Car Settings")]
     // Move speed of a car
-    public float speed = 90f;
+    public float speed;
     // Turning speed of a car
-    public float turnSpeed = 3f;
+    public float turnSpeed;
     // Turn smoothing speed of a car
-    public float smoothing = .5f;
+    public float smoothing;
     // Hover force of a car
-    public float hoverForce = 65f;
+    public float hoverForce;
     // Hover height of a car
-    public float hoverHeight = 3.5f;
+    public float hoverHeight;
     // Burning exhaust of a car
     public ParticleSystem burnerParticles;
     // Should the car accelerate

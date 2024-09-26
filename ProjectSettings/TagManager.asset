@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TeamTrees
   - LevelBlock
+  - Walls
+  - Obstacle
   layers:
   - Default
   - TransparentFX
