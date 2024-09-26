@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6339771083636611587}
   - component: {fileID: 6339771083635649689}
   - component: {fileID: 781727118641968654}
+  - component: {fileID: 3604825013960825998}
   m_Layer: 0
   m_Name: BonePrefab
   m_TagString: Obstacle
@@ -94,3 +95,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 68d5de4c275b2484a87de4f93591635f, type: 3}
+--- !u!95 &3604825013960825998
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339771083633679027}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
