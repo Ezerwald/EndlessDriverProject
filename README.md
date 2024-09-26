@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Collider to obstacles prefabs
 - "Obstacle" tag to obstacles prefabs
 
+### Fixed
+- Obstacles lightning and shadows
+- Walls lightning and shadows
+
 ## [0.0.4] - 2024-09-25
 ### Added
 - Missing walls on LevelBlocks
