@@ -13,39 +13,29 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text runTimeText;
     public TMP_Text highScoreText;
 
-    public float elapsedTime;
-    public float startTime;
+    [SerializeField] HoverMotor hoverMotor;
+    public float currentTime = 0;
     
     void Start()
     {
-        startTime = Time.time;
         endGamePanel.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateTime();
-    }
-
-    public void UpdateTime()
-    {
-        elapsedTime = Time.time - startTime;
     }
 
     public void EndGame()
     {
+        currentTime = hoverMotor.GetCurrentTime();
+
         endGamePanel.SetActive(true);
 
-        runTimeText.text = $"RUN TIME\n{Mathf.Round(elapsedTime)}";
+        runTimeText.text = $"RUN TIME\n{Mathf.Round(currentTime)}";
 
-        UpdateBestTime(Mathf.Round(elapsedTime));
+        UpdateBestTime(Mathf.Round(currentTime));
         highScoreText.text = $"BEST TIME\n{PlayerPrefs.GetFloat("HighScore")}";
     }
 
     public void RestartGame()
     {
-        startTime = Time.time;
+        hoverMotor.SetStartTime(Time.time);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

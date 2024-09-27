@@ -43,13 +43,20 @@ public class HoverMotor : MonoBehaviour
     private float powerInput;
     private float turnInput;
     private bool isStopped = false;
+    private bool isRunning = false;
     private float currentTime = 0;
+    private float startTime = 0;
 
     private float TOLERANCE = 0.001f;
 
     void Awake()
     {
         carMain = GetComponent<Rigidbody>();
+        carMain.useGravity = false;
+
+        currentTimeText.gameObject.SetActive(false);
+
+        StartCoroutine(CutsceneCoroutine());
     }
 
     void Update()
@@ -64,11 +71,21 @@ public class HoverMotor : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isStopped) {
+        if (!isStopped && isRunning) {
             UpdateFloating();
             UpdateTurning();
             UpdateLeaning();
         }
+    }
+
+    public float GetCurrentTime()
+    {
+        return currentTime;
+    }
+
+    public void SetStartTime(float time)
+    {
+        startTime = time;
     }
 
     private void UpdateTurnInput()
@@ -191,6 +208,7 @@ public class HoverMotor : MonoBehaviour
         isStopped = true;
         carMain.constraints = RigidbodyConstraints.None;
         burnerParticles.Stop();
+        currentTimeText.gameObject.SetActive(false);
     }
 
     public void PlayCollisionParticles()
@@ -200,4 +218,15 @@ public class HoverMotor : MonoBehaviour
             collisionParticles.Play();
         }
     }
+
+    IEnumerator CutsceneCoroutine()
+    {
+        yield return new WaitForSeconds(14);    
+        carMain.useGravity = true;
+        currentTime = 0;
+        currentTimeText.gameObject.SetActive(true);
+        isRunning = true;
+        startTime = Time.time;
+    }
+
 }
