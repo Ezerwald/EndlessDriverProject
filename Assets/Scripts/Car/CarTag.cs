@@ -1,29 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 public class CarTag : MonoBehaviour
 {
+    private HoverMotor hoverMotor;
+
+    private void Start()
+    {
+        // Get the HoverMotor component attached to the car
+        hoverMotor = GetComponent<HoverMotor>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // TODO: Insert collision code :)
-        
-        // One example for you, please follow this example making other collisions
-        if (collision.gameObject.CompareTag("TeamTrees"))
+        // Check if the car collides with an obstacle
+        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Walls"))
         {
-            //Debug.LogError("WHy u hit treees");
+            // Stop the car
+            hoverMotor.StopCar();
+
+            // Play particle effect
+            hoverMotor.PlayCollisionParticles();
+
+            // Optionally, you can add other logic here for what happens after the collision
+        }
+        else if (collision.gameObject.CompareTag("TeamTrees"))
+        {
+            // Handle other collisions if needed
         }
         else if (collision.gameObject.CompareTag("LevelBlock"))
         {
-            //Debug.LogError("WHy u hit level blooocks");
+            // Handle other collisions if needed
         }
-        // Do not delete the section below - this is to guide you
         else if (collision.gameObject.CompareTag("Untagged"))
         {
-            //Debug.LogError("Undefined Object hit - please set the Tag");
+            Debug.LogWarning("Undefined Object hit - please set the Tag");
         }
     }
-
 }

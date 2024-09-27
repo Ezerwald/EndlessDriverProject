@@ -18,6 +18,7 @@ public class HoverMotor : MonoBehaviour
     public float hoverHeight;
     // Burning exhaust of a car
     public ParticleSystem burnerParticles;
+    public ParticleSystem collisionParticles;
     // Should the car accelerate
     public bool accelerating = true;
 
@@ -38,6 +39,7 @@ public class HoverMotor : MonoBehaviour
 
     private float powerInput;
     private float turnInput;
+    private bool isStopped = false;
 
     private float TOLERANCE = 0.001f;
 
@@ -48,7 +50,10 @@ public class HoverMotor : MonoBehaviour
 
     void Update()
     {
-        UpdateTurnInput();
+        if (!isStopped)
+        {
+            UpdateTurnInput();
+        }
     }
 
     void FixedUpdate()
@@ -172,4 +177,20 @@ public class HoverMotor : MonoBehaviour
         Left,
         Right,
     }
+
+    public void StopCar()
+    {
+        speed = 0;
+        isStopped = true;
+        carMain.velocity = Vector3.zero;
+    }
+
+    public void PlayCollisionParticles()
+    {
+        if (collisionParticles != null)
+        {
+            collisionParticles.Play();
+        }
+    }
+
 }
