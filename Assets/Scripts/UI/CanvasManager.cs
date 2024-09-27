@@ -18,6 +18,7 @@ public class CanvasManager : MonoBehaviour
     
     void Start()
     {
+        startTime = Time.time;
         endGamePanel.SetActive(false);
     }
 
@@ -35,11 +36,16 @@ public class CanvasManager : MonoBehaviour
     public void EndGame()
     {
         endGamePanel.SetActive(true);
-        Debug.Log("Endgame triggered");
+
+        runTimeText.text = $"RUN TIME\n{Mathf.Round(elapsedTime)}";
+
+        UpdateBestTime(Mathf.Round(elapsedTime));
+        highScoreText.text = $"BEST TIME\n{PlayerPrefs.GetFloat("HighScore")}";
     }
 
     public void RestartGame()
     {
+        startTime = Time.time;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -47,4 +53,14 @@ public class CanvasManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void UpdateBestTime(float newValue)
+    {
+        float currentValue = PlayerPrefs.GetFloat("HighScore", 0);
+        if (currentValue < newValue)
+        {
+            PlayerPrefs.SetFloat("HighScore", newValue);
+        }
+    }
+
 }
