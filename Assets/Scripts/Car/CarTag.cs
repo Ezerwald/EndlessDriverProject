@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarTag : MonoBehaviour
 {
     private HoverMotor hoverMotor;
+    [SerializeField] private CanvasManager canvasManager;
 
     private void Start()
     {
@@ -22,6 +23,9 @@ public class CarTag : MonoBehaviour
 
             // Play particle effect
             hoverMotor.PlayCollisionParticles();
+
+            // Show endgame screen
+            canvasManager.EndGame();
 
             // Optionally, you can add other logic here for what happens after the collision
         }

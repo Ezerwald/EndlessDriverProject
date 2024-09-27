@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class CanvasManager : MonoBehaviour
     
     void Start()
     {
-        
+        endGamePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,16 +34,17 @@ public class CanvasManager : MonoBehaviour
 
     public void EndGame()
     {
-        // TODO: Setup EndGame Panel
+        endGamePanel.SetActive(true);
+        Debug.Log("Endgame triggered");
     }
 
     public void RestartGame()
     {
-        // TODO: Restart the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
-        // TODO: Quit Game
+        Application.Quit();
     }
 }
