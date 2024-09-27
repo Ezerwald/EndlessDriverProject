@@ -59,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2024-09-25
 ### Changed
-- Using Rigidbody instead of NiceCar in HoveMotor.cs
+- Using Rigidbody instead of NiceCar in HoverMotor.cs
 
 ### Fixed
 - Fixed problem with game crashing after tree collision. Removed Utils.ForceCrash(ForcedCrashCategory.Abort) from CarTag.cs and TriggerExit.cs;
