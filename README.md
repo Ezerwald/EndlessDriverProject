@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - UI scaling depending on screen resolution
 - Time counting
+- Best time updating and saving to PlayerPrefs
 - Endgame screen
 - Restart button functionality
 - Quit button functionality
