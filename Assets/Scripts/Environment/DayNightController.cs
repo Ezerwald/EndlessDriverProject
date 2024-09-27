@@ -7,7 +7,7 @@ public class DayNightController : MonoBehaviour
     public Light sun;
     public float secondsInFullDay = 120f;
     [Range(0, 1)]
-    public float currentTimeOfDay = 0;
+    private float currentTimeOfDay = 0.5f;
     [HideInInspector]
     public float timeMultiplier = 1f;
     public Gradient fogColors;
