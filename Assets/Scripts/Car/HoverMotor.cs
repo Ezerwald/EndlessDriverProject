@@ -2,6 +2,8 @@
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using TMPro;
 
 public class HoverMotor : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class HoverMotor : MonoBehaviour
 
     public float maxLeanAngle = 20f;
     public float leanTime = 0.8f;
+    public TextMeshProUGUI currentTimeText;
 
     private LeaningDirection leaningDir = LeaningDirection.None;
     private float leanTimeElapsed;
@@ -40,6 +43,7 @@ public class HoverMotor : MonoBehaviour
     private float powerInput;
     private float turnInput;
     private bool isStopped = false;
+    private float currentTime = 0;
 
     private float TOLERANCE = 0.001f;
 
@@ -53,14 +57,18 @@ public class HoverMotor : MonoBehaviour
         if (!isStopped)
         {
             UpdateTurnInput();
+            currentTime += Time.deltaTime;
+            currentTimeText.text = $"Time\n{Mathf.Round(currentTime)}";
         }
     }
 
     void FixedUpdate()
     {
-        UpdateFloating();
-        UpdateTurning();
-        UpdateLeaning();
+        if (!isStopped) {
+            UpdateFloating();
+            UpdateTurning();
+            UpdateLeaning();
+        }
     }
 
     private void UpdateTurnInput()
@@ -180,9 +188,9 @@ public class HoverMotor : MonoBehaviour
 
     public void StopCar()
     {
-        speed = 0;
         isStopped = true;
-        carMain.velocity = Vector3.zero;
+        carMain.constraints = RigidbodyConstraints.None;
+        burnerParticles.Stop();
     }
 
     public void PlayCollisionParticles()
@@ -192,5 +200,4 @@ public class HoverMotor : MonoBehaviour
             collisionParticles.Play();
         }
     }
-
 }
