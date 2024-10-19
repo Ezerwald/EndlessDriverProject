@@ -7,13 +7,18 @@ using UnityEngine.Diagnostics;
 public class TriggerExit : MonoBehaviour
 {
     public float delay = 5f;
-    
+
     public delegate void ExitAction();
     public static event ExitAction OnChunkExited;
 
     private bool exited = false;
 
-    [SerializeField] private GameObject Chunk;
+    private GameObject Chunk;
+
+    private void Awake()
+    {
+        Chunk = transform.parent.gameObject; // Set Chunk to the parent LevelBlock object
+    }
 
     private void OnTriggerExit(Collider other)
     {
@@ -24,7 +29,7 @@ public class TriggerExit : MonoBehaviour
             if (!exited)
             {
                 exited = true;
-                OnChunkExited();
+                OnChunkExited?.Invoke();
                 StartCoroutine(WaitAndDestroy());
             }
         }
@@ -32,9 +37,8 @@ public class TriggerExit : MonoBehaviour
 
     IEnumerator WaitAndDestroy()
     {
-        yield return new WaitForSeconds (delay);
-        Destroy(Chunk);
+        yield return new WaitForSeconds(delay);
+        Destroy(Chunk); // Destroy the parent LevelBlock object
         Debug.Log("Chunk destroyed");
-        // Destroy the LevelBlock
     }
 }
