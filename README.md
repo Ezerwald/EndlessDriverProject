@@ -1,5 +1,5 @@
 # Description
-This project is a completed test task focused on fixing and improving the initial game "Endless Driver" made on Unity. The following Changelog written by me describes all the changes done to the project.
+This project is a completed test task focused on fixing and improving the initial game "Endless Driver" created with Unity. The following Changelog written by me describes all the changes done to the project.
 
 # Changelog
 
